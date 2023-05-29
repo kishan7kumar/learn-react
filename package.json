@@ -1,0 +1,22 @@
+{
+  "name": "learn-react",
+  "version": "1.0.0",
+  "description": "learnign react from akshay",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kishan7kumar/learn-react.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "kishan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kishan7kumar/learn-react/issues"
+  },
+  "homepage": "https://github.com/kishan7kumar/learn-react#readme"
+}
