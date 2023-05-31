@@ -2,8 +2,9 @@
   "name": "learn-react",
   "version": "1.0.0",
   "description": "learnign react from akshay",
-  "main": "app.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build":"parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -18,5 +19,16 @@
   "bugs": {
     "url": "https://github.com/kishan7kumar/learn-react/issues"
   },
-  "homepage": "https://github.com/kishan7kumar/learn-react#readme"
+  "homepage": "https://github.com/kishan7kumar/learn-react#readme",
+  "devDependencies": {
+    "parcel": "^2.9.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserlist": [
+    "last 2 versions"
+  ]
 }

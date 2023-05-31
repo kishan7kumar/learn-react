@@ -1,18 +1,22 @@
-const heading = React.createElement(
-  "h1",
-  {
-    id: "headingOne",
-  },
-  "this is header"
-);
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const parent = React.createElement(
-  "div",
-  {},
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "this is header"),
-    React.createElement("h2", {}, "this is header2"),
-  ])
-);
+const heading = <h1>Hello thi is hard</h1>;
+const title = () => {
+  return <h2>thsi is title</h2>;
+};
+const HeadingComponent = () => {
+  return (
+    <React.Fragment>
+      <div>{title()}this is heading</div>
+      <div>this is second heading</div>
+    </React.Fragment>
+  );
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(
+  <div>
+    <HeadingComponent></HeadingComponent>
+  </div>
+);
