@@ -1,3 +1,40 @@
 h1 {
   color: red;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid gray;
+}
+
+.nav-items > ul {
+  display: flex;
+}
+.nav-items > ul > li {
+  list-style-type: none;
+  margin: 0px 16px;
+}
+
+.res-card {
+  border: 1px solid gray;
+  width: 300px;
+  
+  background-color: lightseagreen;
+  margin: 16px;
+}
+
+.res-card:hover {
+  border: 2px solid blue;
+  cursor: pointer;
+}
+
+.res-card .card-image {
+  height: auto;
+  width: 100%;
+}
+
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+}
