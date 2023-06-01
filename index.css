@@ -19,7 +19,7 @@ h1 {
 .res-card {
   border: 1px solid gray;
   width: 300px;
-  
+
   background-color: lightseagreen;
   margin: 16px;
 }
@@ -38,3 +38,8 @@ h1 {
   display: flex;
   flex-wrap: wrap;
 }
+
+.filter-btn {
+  margin: 16px 0px;
+}
+

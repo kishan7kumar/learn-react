@@ -1,123 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
 const restList = [
   {
-    type: "restaurant",
     data: {
-      type: "F",
       id: "66806",
       name: "Habibi Falafel",
       uuid: "903ef8a8-b84f-4a45-ba8b-7e16d96b870a",
-      city: "1",
-      area: "Koramangala",
       totalRatingsString: "5000+ ratings",
       cloudinaryImageId: "gmqqfm0lyoq5cjsadgff",
       cuisines: ["Middle Eastern", "Lebanese", "Mediterranean", "Arabian"],
-      tags: [],
       costForTwo: 25000,
-      costForTwoString: "₹250 FOR TWO",
       deliveryTime: 16,
-      minDeliveryTime: 16,
-      maxDeliveryTime: 16,
-      slaString: "16 MINS",
-      lastMileTravel: 1.600000023841858,
-      slugs: {
-        restaurant: "habibi-falafel-koramangala-1st-block-koramangala",
-        city: "bangalore",
-      },
-      cityState: "1",
-      address: "969, 1st Main Rd, S.T. Bed, 1st Block Koramangala, Bangalore",
-      locality: "1st Block",
-      parentId: 9929,
-      unserviceable: false,
-      veg: true,
-      select: false,
-      favorite: false,
-      tradeCampaignHeaders: [],
-      ribbon: [
-        {
-          type: "PROMOTED",
-        },
-      ],
-      chain: [],
-      feeDetails: {
-        fees: [
-          {
-            name: "distance",
-            fee: 3100,
-            message: "",
-          },
-          {
-            name: "time",
-            fee: 0,
-            message: "",
-          },
-          {
-            name: "special",
-            fee: 0,
-            message: "",
-          },
-        ],
-        totalFees: 3100,
-        message: "",
-        title: "Delivery Charge",
-        amount: "3100",
-        icon: "",
-      },
-      availability: {
-        opened: true,
-        nextOpenMessage: "",
-        nextCloseMessage: "",
-      },
-      longDistanceEnabled: 0,
-      rainMode: "NONE",
-      thirdPartyAddress: false,
-      thirdPartyVendor: "",
-      adTrackingID: "cid=6880587~p=16~eid=00000188-72d1-92ef-038f-422500711032",
-      badges: {
-        imageBased: [],
-        textBased: [],
-        textExtendedBadges: [],
-      },
-      lastMileTravelString: "1.6 kms",
-      hasSurge: false,
-      aggregatedDiscountInfoV3: {
-        header: "₹125 OFF",
-        subHeader: "ABOVE ₹249",
-        discountTag: "FLAT DEAL",
-        headerTypeV2: 0,
-      },
-      sla: {
-        restaurantId: "66806",
-        deliveryTime: 16,
-        minDeliveryTime: 16,
-        maxDeliveryTime: 16,
-        lastMileTravel: 1.600000023841858,
-        lastMileDistance: 0,
-        serviceability: "SERVICEABLE",
-        rainMode: "NONE",
-        longDistance: "NOT_LONG_DISTANCE",
-        preferentialService: false,
-        iconType: "EMPTY",
-      },
-      promoted: true,
       avgRating: "4.4",
-      totalRatings: 5000,
-      new: false,
     },
-    subtype: "basic",
   },
   {
-    type: "restaurant",
     data: {
-      type: "F",
       id: "229",
       name: "Meghana Foods",
       uuid: "4fdd19e2-5d0f-4bde-9c7f-dc3e8d36021f",
-      city: "1",
-      area: "Koramangala",
-      totalRatingsString: "10000+ ratings",
       cloudinaryImageId: "xqwpuhgnsaf18te7zvtv",
       cuisines: [
         "Biryani",
@@ -131,80 +30,6 @@ const restList = [
       costForTwo: 50000,
       costForTwoString: "₹500 FOR TWO",
       deliveryTime: 18,
-      minDeliveryTime: 18,
-      maxDeliveryTime: 18,
-      slaString: "18 MINS",
-      lastMileTravel: 1.2999999523162842,
-      slugs: {
-        restaurant: "meghana-foods-5th-block-koramangala",
-        city: "bangalore",
-      },
-      cityState: "1",
-      address:
-        "124, Near Jyothi Nivas College, 1st Cross, KHB Colony, Koramangala 5th Block, Bangalore",
-      locality: "5th Block",
-      parentId: 635,
-      unserviceable: false,
-      veg: false,
-      select: false,
-      favorite: false,
-      tradeCampaignHeaders: [],
-      chain: [],
-      feeDetails: {
-        fees: [
-          {
-            name: "distance",
-            fee: 3100,
-            message: "",
-          },
-          {
-            name: "time",
-            fee: 0,
-            message: "",
-          },
-          {
-            name: "special",
-            fee: 0,
-            message: "",
-          },
-        ],
-        totalFees: 3100,
-        message: "",
-        title: "Delivery Charge",
-        amount: "3100",
-        icon: "",
-      },
-      availability: {
-        opened: true,
-        nextOpenMessage: "",
-        nextCloseMessage: "",
-      },
-      longDistanceEnabled: 0,
-      rainMode: "NONE",
-      thirdPartyAddress: false,
-      thirdPartyVendor: "",
-      adTrackingID: "",
-      badges: {
-        imageBased: [],
-        textBased: [],
-        textExtendedBadges: [],
-      },
-      lastMileTravelString: "1.2 kms",
-      hasSurge: false,
-      sla: {
-        restaurantId: "229",
-        deliveryTime: 18,
-        minDeliveryTime: 18,
-        maxDeliveryTime: 18,
-        lastMileTravel: 1.2999999523162842,
-        lastMileDistance: 0,
-        serviceability: "SERVICEABLE",
-        rainMode: "NONE",
-        longDistance: "NOT_LONG_DISTANCE",
-        preferentialService: false,
-        iconType: "EMPTY",
-      },
-      promoted: false,
       avgRating: "4.3",
       totalRatings: 10000,
       new: false,
@@ -212,7 +37,6 @@ const restList = [
     subtype: "basic",
   },
   {
-    type: "restaurant",
     data: {
       type: "F",
       id: "121603",
@@ -1164,71 +988,4 @@ const restList = [
   },
 ];
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img></img>
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-  const {
-    name,
-    cuisines,
-    avgRating,
-    costForTwo,
-    deliveryTime,
-    cloudinaryImageId,
-  } = props.resData.data;
-  return (
-    <div className="res-card">
-      <img
-        src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-        className="card-image"
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating}</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{deliveryTime}</h4>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">search</div>
-      <div className="res-container">
-        {restList.map((resData) => (
-          <RestaurantCard key={resData.data.id} resData={resData} />
-        ))}
-      </div>
-    </div>
-  );
-};
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout></AppLayout>);
+export default restList;
