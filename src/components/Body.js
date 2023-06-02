@@ -1,15 +1,60 @@
 import RestaurantCard from "./RestaurantCard";
 import restList from "../utils/mockData";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(restList);
- 
-  console.log(object);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [originalRestaurants, setOriginalRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const client = axios.create({
+    baseURL:
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING",
+  });
 
-  return (
+  useEffect(() => {
+    console.log("useEffect called");
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const data = await client.get("");
+    } catch (error) {
+      setListOfRestaurants(restList);
+      setOriginalRestaurants(restList);
+    }
+  };
+
+  return originalRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div>
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+              if (e.target.value === "")
+                setListOfRestaurants(originalRestaurants);
+            }}
+          />
+          <button
+            onClick={() => {
+              console.log(searchText);
+              setListOfRestaurants(originalRestaurants);
+              const filteredList = listOfRestaurants.filter((res) =>
+                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setListOfRestaurants(filteredList);
+            }}
+          >
+            search
+          </button>
+        </div>
         <button
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
@@ -22,7 +67,6 @@ const Body = () => {
           Show Top rated restaurants
         </button>
       </div>
-      <div className="search">search</div>
       <div className="res-container">
         {listOfRestaurants.map((resData) => (
           <RestaurantCard key={resData.data.id} resData={resData} />
