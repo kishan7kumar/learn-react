@@ -7,7 +7,7 @@ import AboutUs from "./components/AboutUs";
 import ErrorPage from "./components/ErrorPage";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
-
+import Profile from "./components/Profile";
 
 const AppLayout = () => {
   return (
@@ -25,12 +25,18 @@ const appRouter = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "/", // here '/' means from the root
         element: <Body />,
       },
       {
         path: "/about",
         element: <AboutUs />,
+        children: [
+          {
+            path: "profile", // here if we include / then it will be from root so not included
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/contact",
