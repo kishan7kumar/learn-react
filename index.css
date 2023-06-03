@@ -54,10 +54,10 @@ h1 {
 
 .shimmer-card {
   border: 1px solid gray;
-  width: 300px;
+  width: 200px;
   background-color: lightseagreen;
   margin: 16px;
-  height: 500px;
+  height: 300px;
 }
 
 .filter {

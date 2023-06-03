@@ -10,7 +10,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const client = axios.create({
     baseURL:
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING",
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0630231&lng=73.0700421&page_type=DESKTOP_WEB_LISTING",
   });
 
   useEffect(() => {
@@ -20,10 +20,11 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const data = await client.get("");
+      const resp = await client.get("");
+      setListOfRestaurants(resp.data.data.cards[2].data.data.cards);
+      setOriginalRestaurants(resp.data.data.cards[2].data.data.cards);
     } catch (error) {
-      setListOfRestaurants(restList);
-      setOriginalRestaurants(restList);
+      console.log(error);
     }
   };
 
