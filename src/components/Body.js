@@ -13,6 +13,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0630231&lng=73.0700421&page_type=DESKTOP_WEB_LISTING",
   });
 
+  // NOTE: Here the empty array in dependency array ensures that the useEffect is called only on the initial render and if we do not add it then it will be called after every render. Also if you want to call useEffect for multiple state variable then you have to use multiple useEffect.
   useEffect(() => {
     console.log("useEffect called");
     fetchData();
