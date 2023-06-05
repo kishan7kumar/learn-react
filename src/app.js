@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,6 +8,18 @@ import ErrorPage from "./components/ErrorPage";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+
+/* NOTE
+ * This is way of dynamic import so all components of instamart
+ * are loaded when it is rendered but not in starting of the application
+ * Upon on Demand Loading -> upon render -> suspend loading
+ * Import here is a promise and react uses Suspense to wait for promise to resolve
+ * Also it takes fallback properties to show component while the bundle file is downloaded
+ * Also do not import this lazy load component inside another component
+ */
+
+const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
   return (
@@ -25,7 +37,7 @@ const appRouter = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/", // here '/' means from the root
+        path: "/", // NOTE: here '/' means from the root
         element: <Body />,
       },
       {
@@ -33,7 +45,7 @@ const appRouter = createBrowserRouter([
         element: <AboutUs />,
         children: [
           {
-            path: "profile", // here if we include / then it will be from root so not included
+            path: "profile", // NOTE: here if we include / then it will be from root so not included
             element: <Profile />,
           },
         ],
@@ -45,6 +57,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={Shimmer}>
+            <Instamart />
+          </Suspense>
+        ),
       },
     ],
   },

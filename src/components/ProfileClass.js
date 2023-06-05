@@ -26,7 +26,7 @@ export class ProfileClass extends Component {
       console.log("timer on");
     }, 1000);
   }
-  // NOTE: Called after every subsequent render
+  // NOTE: Called after every subsequent render when state is changed
   componentDidUpdate(prevProps, prevState) {
     if (this.state.name !== prevState.name) {
       console.log("state changed");

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("login");
+  const isOnline = useOnline();
+
   return (
     <div className="header">
       <div className="logo-container">
@@ -19,7 +22,11 @@ const Header = () => {
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
+          <li>
+            <Link to="/instamart">Instamart </Link>
+          </li>
           <li>Cart</li>
+          <h2>{isOnline ? "Online" : "Offline"}</h2>
           <button
             className="logout-btn"
             onClick={() =>

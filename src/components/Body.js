@@ -1,13 +1,15 @@
 import RestaurantCard from "./RestaurantCard";
-import restList from "../utils/mockData";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [originalRestaurants, setOriginalRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const isOnline = useOnline();
   const client = axios.create({
     baseURL:
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0630231&lng=73.0700421&page_type=DESKTOP_WEB_LISTING",
@@ -29,6 +31,9 @@ const Body = () => {
     }
   };
 
+  if (!isOnline) {
+    return <p>You are offline</p>;
+  }
   return originalRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -48,9 +53,7 @@ const Body = () => {
             onClick={() => {
               console.log(searchText);
               setListOfRestaurants(originalRestaurants);
-              const filteredList = listOfRestaurants.filter((res) =>
-                res.data.name.toLowerCase().includes(searchText.toLowerCase())
-              );
+              const filteredList = filterData(searchText, listOfRestaurants);
               setListOfRestaurants(filteredList);
             }}
           >
