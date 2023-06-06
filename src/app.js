@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
+import userContext from "./utils/userContext";
 
 /* NOTE
  * This is way of dynamic import so all components of instamart
@@ -22,15 +23,29 @@ import Shimmer from "./components/Shimmer";
 const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "ritik",
+    email: "ritik@gmail.com",
+  });
+
   return (
-    <div className="app bg-gray-100 h-full w-full flex flex-col">
-      <Header />
-      <div className="grow min-h-0">
-        <div className="h-full overflow-y-auto">
-          <Outlet />
+    <>
+      <userContext.Provider
+        value={{
+          user: user,
+          setUser: setUser,
+        }}
+      >
+        <div className="app bg-gray-100 h-full w-full flex flex-col">
+          <Header />
+          <div className="grow min-h-0">
+            <div className="h-full overflow-y-auto">
+              <Outlet />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </userContext.Provider>
+    </>
   );
 };
 

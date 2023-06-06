@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import { useContext } from "react";
+import userContext from "../utils/userContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("login");
   const isOnline = useOnline();
+  const { user } = useContext(userContext);
 
   return (
     <div className="flex justify-between py-4 border bg-blue-600 shadow-lg ">
@@ -27,6 +30,7 @@ const Header = () => {
           </li>
           <li className="mx-4 text-white hover:scale-110">Cart</li>
           <h2 className="mx-4 text-white">{isOnline ? "Online" : "Offline"}</h2>
+          <h2>{user.name}</h2>
           <button
             className="mx-4 text-white hover:scale-110"
             onClick={() =>

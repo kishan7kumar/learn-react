@@ -1,14 +1,16 @@
 import RestaurantCard from "./RestaurantCard";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import userContext from "../utils/userContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [originalRestaurants, setOriginalRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const { user, setUser } = useContext(userContext);
   const isOnline = useOnline();
   const client = axios.create({
     baseURL:
@@ -74,6 +76,26 @@ const Body = () => {
         >
           Top Rated
         </button>
+        <input
+          className="ml-4 p-2 border border-gray-400 rounded-lg"
+          value={user.name}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              name: e.target.value,
+            })
+          }
+        ></input>
+        <input
+          className="ml-4 p-2 border border-gray-400 rounded-lg"
+          value={user.email}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              email: e.target.value,
+            })
+          }
+        ></input>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-4">
         {listOfRestaurants.map((resData) => (

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import userContext from "../utils/userContext";
+
 export class ProfileClass extends Component {
   // NOTE render method is very important here, it returns the JSX
   // NOTE Here acc to react life cycle the constructor is called first and then render method.
@@ -46,6 +48,13 @@ export class ProfileClass extends Component {
     return (
       <div>
         <p>{this.state.name}</p>
+        <userContext.Consumer>
+          {({ user }) => (
+            <h2 className="text-red-600 font-semibold">
+              {user.name} from context
+            </h2>
+          )}
+        </userContext.Consumer>
         <p>{this.state.location}</p>
       </div>
     );
