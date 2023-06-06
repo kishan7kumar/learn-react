@@ -1,61 +1,52 @@
 import React, { useState } from "react";
 
-const Section = ({
-  title,
-  description,
-  isVisible,
-  setIsVisible,
-  setIsVisibleAll,
-}) => {
+const sectionData = [
+  {
+    title: "science",
+    description: "this is science subject",
+  },
+  {
+    title: "maths",
+    description: "this is maths subject",
+  },
+  {
+    title: "hindi",
+    description: "this is hindi subject",
+  },
+];
+
+const Section = ({ title, description, isVisible, setIsVisible }) => {
   return (
     <div className="m-3 p-3 border border-gray-300">
       <h1 className="text-lg font-semibold">{title}</h1>
       {isVisible ? (
-        <button onClick={() => setIsVisibleAll()}>Hide</button>
+        <>
+          <button onClick={() => setIsVisible(false)}>Hide</button>
+          <p className="border text-gray-700">{description}</p>
+        </>
       ) : (
-        <button onClick={() => setIsVisible()}>Show</button>
+        <button onClick={() => setIsVisible(true)}>Show</button>
       )}
-      {isVisible && <p className="border text-gray-700">{description}</p>}
     </div>
   );
 };
 
 const Instamart = () => {
-  const [setConfig, setIsConfig] = useState({
-    science: false,
-    maths: false,
-    physics: false,
-  });
+  const [setConfig, setIsConfig] = useState(null);
   return (
     <>
       <div>Instamart Page</div>
-      <Section
-        title={"science "}
-        description={"this is science"}
-        isVisible={setConfig.science}
-        setIsVisible={() =>
-          setIsConfig({ science: true, maths: false, physics: false })
-        }
-        setIsVisibleAll={() => setIsConfig({ science: false })}
-      ></Section>
-      <Section
-        title={"maths "}
-        description={"this is maths"}
-        isVisible={setConfig.maths}
-        setIsVisible={() =>
-          setIsConfig({ science: false, maths: true, physics: false })
-        }
-        setIsVisibleAll={() => setIsConfig({ maths: false })}
-      ></Section>
-      <Section
-        title={"physics "}
-        description={"this is physics"}
-        isVisible={setConfig.physics}
-        setIsVisible={() =>
-          setIsConfig({ science: false, maths: false, physics: true })
-        }
-        setIsVisibleAll={() => setIsConfig({ physics: false })}
-      ></Section>
+      {sectionData.map((item, index) => (
+        <Section
+          key={index}
+          title={item.title}
+          description={item.description}
+          isVisible={setConfig === index ? true : false}
+          setIsVisible={(buttonStatus) => {
+            buttonStatus ? setIsConfig(index) : setIsConfig(null);
+          }}
+        />
+      ))}
     </>
   );
 };
