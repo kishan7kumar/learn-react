@@ -23,9 +23,13 @@ const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="app bg-gray-100 h-full w-full flex flex-col">
       <Header />
-      <Outlet />
+      <div className="grow min-h-0">
+        <div className="h-full overflow-y-auto">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

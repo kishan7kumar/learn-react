@@ -1,10 +1,29 @@
-h1 {
-  color: red;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
-  background-color: aliceblue;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+/* h1 {
+  color: red;
+}
+
+
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -63,4 +82,4 @@ h1 {
 .filter {
   display: flex;
   margin: 16px 0px;
-}
+} */

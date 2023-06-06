@@ -7,28 +7,28 @@ const Header = () => {
   const isOnline = useOnline();
 
   return (
-    <div className="header">
+    <div className="flex justify-between py-4 border bg-blue-600 shadow-lg ">
       <div className="logo-container">
         <img></img>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="flex">
+        <ul className="flex">
+          <li className="mx-4 text-white hover:scale-110">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="mx-4 text-white hover:scale-110">
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="mx-4 text-white hover:scale-110">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="mx-4 text-white hover:scale-110">
             <Link to="/instamart">Instamart </Link>
           </li>
-          <li>Cart</li>
-          <h2>{isOnline ? "Online" : "Offline"}</h2>
+          <li className="mx-4 text-white hover:scale-110">Cart</li>
+          <h2 className="mx-4 text-white">{isOnline ? "Online" : "Offline"}</h2>
           <button
-            className="logout-btn"
+            className="mx-4 text-white hover:scale-110"
             onClick={() =>
               btnName === "login" ? setBtnName("logout") : setBtnName("login")
             }

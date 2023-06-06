@@ -37,11 +37,13 @@ const Body = () => {
   return originalRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
+    <div className="p-5">
+      <div className="flex items-center">
         <div>
           <input
+            className="rounded-md p-2 mr-3 border hover:border-gray-400"
             type="text"
+            placeholder="Search Restaurants..."
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -50,6 +52,7 @@ const Body = () => {
             }}
           />
           <button
+            className="bg-green-600 p-2 rounded-md text-white hover:bg-green-800"
             onClick={() => {
               console.log(searchText);
               setListOfRestaurants(originalRestaurants);
@@ -57,7 +60,7 @@ const Body = () => {
               setListOfRestaurants(filteredList);
             }}
           >
-            search
+            Search
           </button>
         </div>
         <button
@@ -67,12 +70,12 @@ const Body = () => {
             );
             setListOfRestaurants(filteredList);
           }}
-          className="filter-btn"
+          className="bg-purple-600 p-2 rounded-md ml-3 text-white hover:bg-purple-800"
         >
-          Show Top rated restaurants
+          Top Rated
         </button>
       </div>
-      <div className="res-container">
+      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-4">
         {listOfRestaurants.map((resData) => (
           <RestaurantCard key={resData.data.id} resData={resData} />
         ))}
