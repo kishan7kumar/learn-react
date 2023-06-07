@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { useContext } from "react";
 import userContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("login");
   const isOnline = useOnline();
   const { user } = useContext(userContext);
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between py-4 border bg-blue-600 shadow-lg ">
@@ -28,7 +30,9 @@ const Header = () => {
           <li className="mx-4 text-white hover:scale-110">
             <Link to="/instamart">Instamart </Link>
           </li>
-          <li className="mx-4 text-white hover:scale-110">Cart</li>
+          <li className="mx-4 text-white hover:scale-110">
+            <Link to="/cart">Cart </Link> {cartItems.length}
+          </li>
           <h2 className="mx-4 text-white">{isOnline ? "Online" : "Offline"}</h2>
           <h2>{user.name}</h2>
           <button

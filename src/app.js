@@ -10,6 +10,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 import userContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 
 /* NOTE
  * This is way of dynamic import so all components of instamart
@@ -29,7 +32,7 @@ const AppLayout = () => {
   });
 
   return (
-    <>
+    <Provider store={store}>
       <userContext.Provider
         value={{
           user: user,
@@ -45,7 +48,7 @@ const AppLayout = () => {
           </div>
         </div>
       </userContext.Provider>
-    </>
+    </Provider>
   );
 };
 
@@ -84,6 +87,10 @@ const appRouter = createBrowserRouter([
             <Instamart />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
