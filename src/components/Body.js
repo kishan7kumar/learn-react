@@ -12,10 +12,10 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const { user, setUser } = useContext(userContext);
   const isOnline = useOnline();
-  const client = axios.create({
-    baseURL:
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0630231&lng=73.0700421&page_type=DESKTOP_WEB_LISTING",
-  });
+  // const client = axios.create({
+  //   baseURL:
+  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0630231&lng=73.0700421&page_type=DESKTOP_WEB_LISTING",
+  // });
 
   // NOTE: Here the empty array in dependency array ensures that the useEffect is called only on the initial render and if we do not add it then it will be called after every render. Also if you want to call useEffect for multiple state variable then you have to use multiple useEffect.
   useEffect(() => {
@@ -25,7 +25,9 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const resp = await client.get("");
+      const resp = await axios.get(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0630231&lng=73.0700421&page_type=DESKTOP_WEB_LISTING"
+      );
       setListOfRestaurants(resp.data.data.cards[2].data.data.cards);
       setOriginalRestaurants(resp.data.data.cards[2].data.data.cards);
     } catch (error) {
@@ -43,6 +45,7 @@ const Body = () => {
       <div className="flex items-center">
         <div>
           <input
+            data-testid="input-box"
             className="rounded-md p-2 mr-3 border hover:border-gray-400"
             type="text"
             placeholder="Search Restaurants..."
@@ -54,6 +57,7 @@ const Body = () => {
             }}
           />
           <button
+            data-testid="search-button"
             className="bg-green-600 p-2 rounded-md text-white hover:bg-green-800"
             onClick={() => {
               console.log(searchText);
@@ -97,7 +101,10 @@ const Body = () => {
           }
         ></input>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-4">
+      <div
+        data-testid="res-list"
+        className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-4"
+      >
         {listOfRestaurants.map((resData) => (
           <RestaurantCard key={resData.data.id} resData={resData} />
         ))}

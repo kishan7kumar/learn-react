@@ -6,17 +6,15 @@ import { CDN_MENU_URL } from "./constant";
 function useRestaurantMenu(resId) {
   const [restaurantMenu, setRestaurantMenu] = useState([]);
 
-  const client = axios.create({
-    baseURL: CDN_MENU_URL,
-  });
-
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
-      const resp = await client.get(`${resId}&submitAction=ENTER`);
+      const resp = await axios.get(
+        `${CDN_MENU_URL}/${resId}&submitAction=ENTER`
+      );
       const MenuList =
         resp.data.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card
           .card.itemCards;

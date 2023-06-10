@@ -36,11 +36,12 @@ const RestaurantMenu = () => {
         <div className="ml-10 h-full flex flex-col grow">
           <h1 className="text-2xl text-purple-600 font-semibold mb-4">Menu</h1>
           <div className="grow overflow-y-auto min-h-0">
-            <ul>
+            <ul data-testid="menu-items">
               {restaurantMenu?.map((menu) => (
                 <li key={menu.id}>
                   <div className="inline-block mb-2">{menu.name}</div>
                   <button
+                    data-testid="add-button"
                     className="border text-sm border-green-600 text-black rounded-lg hover:bg-green-600 hover:text-white px-2 ml-3"
                     onClick={() => handleAddItem(menu)}
                   >

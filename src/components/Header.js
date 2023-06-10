@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className="flex justify-between py-4 border bg-blue-600 shadow-lg ">
       <div className="logo-container">
-        <img></img>
+        <img data-testid="logo"></img>
       </div>
       <div className="flex">
         <ul className="flex">
@@ -31,9 +31,13 @@ const Header = () => {
             <Link to="/instamart">Instamart </Link>
           </li>
           <li className="mx-4 text-white hover:scale-110">
-            <Link to="/cart">Cart </Link> {cartItems.length}
+            <Link data-testid="cart-item" to="/cart">
+              Cart {cartItems.length}
+            </Link>
           </li>
-          <h2 className="mx-4 text-white">{isOnline ? "Online" : "Offline"}</h2>
+          <h2 data-testid="online-status" className="mx-4 text-white">
+            {isOnline ? "Online" : "Offline"}
+          </h2>
           <h2>{user.name}</h2>
           <button
             className="mx-4 text-white hover:scale-110"
